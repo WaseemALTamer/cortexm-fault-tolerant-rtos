@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/kernel",
+                "${workspaceFolder}/app",
+                "${workspaceFolder}/platform/stm32f411",
+                "${workspaceFolder}/libraries/cmsis-device-f4/Include",
+                "${workspaceFolder}/libraries/CMSIS_6/CMSIS/Core/Include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Program Files\\gcc\\bin\\gcc.exe",
+            "cStandard": "gnu23",
+            "cppStandard": "gnu++20",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

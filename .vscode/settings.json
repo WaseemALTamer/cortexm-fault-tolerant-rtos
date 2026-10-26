@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "STM32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/kernel",
+                "${workspaceFolder}/app",
+                "${workspaceFolder}/platform/stm32f411",
+                "${workspaceFolder}/libraries/cmsis-device-f4/Include",
+                "${workspaceFolder}/libraries/CMSIS_6/CMSIS/Core/Include"
+            ],
+            "defines": [
+                "STM32F411xE"
+            ],
+            "compilerPath": "C:/Program Files/arm-gnu-toolchain/bin/arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb",
+                "-mfpu=fpv4-sp-d16",
+                "-mfloat-abi=hard"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4,
+    "C_Cpp.errorSquiggles": "disabled"
+}
