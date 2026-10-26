@@ -1,3 +1,4 @@
+
 @echo off
 if not exist build mkdir build
 
@@ -9,30 +10,26 @@ set INCLUDES=-I kernel -I app ^
 -I libraries/CMSIS_6/CMSIS/Core/Include ^
 -I %PLATFORM%
 
-
-
 for %%f in (kernel\*.c) do (
-    arm-none-eabi-gcc %CPUFLAGS% -ffreestanding %INCLUDES% -c "%%f" -o "build\kernel_%%~nf.o"
+    arm-none-eabi-gcc %CPUFLAGS% -std=c11 -ffreestanding %INCLUDES% -c "%%f" -o "build\kernel_%%~nf.o"
     if errorlevel 1 exit /b 1
 )
 
-
 for %%f in (app\*.cpp) do (
-    arm-none-eabi-g++ %CPUFLAGS% -ffreestanding -fno-exceptions -fno-rtti %INCLUDES% -c "%%f" -o "build\app_%%~nf.o"
+    arm-none-eabi-g++ %CPUFLAGS% -std=c++17 -ffreestanding -fno-exceptions -fno-rtti %INCLUDES% -c "%%f" -o "build\app_%%~nf.o"
     if errorlevel 1 exit /b 1
 )
 
 for %%f in (platform\stm32f411\*.c) do (
-    arm-none-eabi-gcc %CPUFLAGS% -ffreestanding %INCLUDES% -c "%%f" -o "build\platform_%%~nf.o"
+    arm-none-eabi-gcc %CPUFLAGS% -std=c11 -ffreestanding %INCLUDES% -c "%%f" -o "build\platform_%%~nf.o"
     if errorlevel 1 exit /b 1
 )
 
 arm-none-eabi-gcc %CPUFLAGS% -c %PLATFORM%startup.s -o build/startup.o
 if errorlevel 1 exit /b 1
 
-arm-none-eabi-g++ %CPUFLAGS% -T %PLATFORM%linker.ld -nostartfiles -Wl,--gc-sections build\*.o -o build\firmware.elf
+arm-none-eabi-g++ %CPUFLAGS% -T %PLATFORM%linker.ld -nostartfiles --specs=nano.specs --specs=nosys.specs -Wl,--gc-sections -Wl,-Map=build/firmware.map build\*.o -o build/firmware.elf
 if errorlevel 1 exit /b 1
-
 
 arm-none-eabi-objcopy -O binary build/firmware.elf build/firmware.bin
 if errorlevel 1 exit /b 1
