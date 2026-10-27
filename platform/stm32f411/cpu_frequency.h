@@ -36,6 +36,12 @@ uint32_t CPU_Frequency_Get(void);
 
 uint32_t CPU_Frequency_GetAPB1(void);
 
+void CPU_StartCycleCounter(void);
+
+uint32_t CPU_CycleCounter_Get(void);
+
+
+
 #ifdef __cplusplus
 }
 #endif

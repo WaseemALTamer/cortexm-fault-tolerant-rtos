@@ -261,3 +261,18 @@ uint32_t CPU_Frequency_GetAPB1(void)
 
     return pclk1;
 }
+
+
+void CPU_StartCycleCounter(void)
+{
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+    DWT->CYCCNT = 0U;
+    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+}
+
+
+uint32_t CPU_CycleCounter_Get(void){
+    return DWT->CYCCNT;
+}
+
+

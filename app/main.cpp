@@ -14,25 +14,28 @@ UART_Handle uart2;
 
 uint32_t clock_speed;
 
-void delay(uint32_t micro_seconds){
 
-    uint32_t factor = 1000000 / micro_seconds;
 
-    uint32_t total_cycles_to_wait = clock_speed / factor;
+void delay_us(uint32_t microseconds)
+{
+    const uint32_t cycles_per_us = clock_speed / 1000000U;
+    const uint32_t start = CPU_CycleCounter_Get();
+    const uint32_t cycles = cycles_per_us * microseconds;
 
-    UART_PrintInt(&uart2, total_cycles_to_wait);
-    UART_Println(&uart2, "");
-
-    while(total_cycles_to_wait) total_cycles_to_wait--;
+    while ((uint32_t)(CPU_CycleCounter_Get() - start) < cycles)
+    {
+        // Wait for the hardware cycle counter.
+    }
 }
 
 
 
 void init(void){
 
-    CPU_Frequency_Init(CPU_FREQ_100MHZ);
+    CPU_Frequency_Init(CPU_FREQ_16MHZ);
     clock_speed = CPU_Frequency_Get();
 
+    CPU_StartCycleCounter();
 
 
     UART_Init(&uart2,
@@ -57,7 +60,7 @@ void loop(void)
 
 
     
-    delay(1000000);
+    delay_us(1000000);
     GPIO_Toggle(GPIOA, 5);
 }
 
