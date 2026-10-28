@@ -1,0 +1,6 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+#define SYSTICK_FREQUENCY_HZ  1000U
+
+#endif

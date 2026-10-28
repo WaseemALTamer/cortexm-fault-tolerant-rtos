@@ -14,6 +14,8 @@
 .extern _sbss
 .extern _ebss
 
+.extern SysTick_Handler
+
 
 .section .isr_vector, "a", %progbits
 .align 2
