@@ -2,5 +2,6 @@
 #define CONSTANTS_H
 
 #define SYSTICK_FREQUENCY_HZ  1000U
+#define MAX_TASKS 10
 
 #endif

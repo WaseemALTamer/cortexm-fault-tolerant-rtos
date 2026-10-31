@@ -22,8 +22,6 @@
 UART_Handle uart2;
 
 
-
-
 void init(void){
 
 
@@ -45,10 +43,6 @@ void init(void){
 
 void loop(void)
 {
-
-    
-    UART_PrintInt(&uart2, TickController_GetUptimeSeconds());
-    UART_Println(&uart2, "");
 
     TickController_delay_us(1000000);
     GPIO_Toggle(GPIOA, 5);
