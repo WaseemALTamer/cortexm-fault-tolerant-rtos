@@ -19,10 +19,6 @@
 
 
 
-//UART_Handle uart2;
-
-
-
 UART_Handle uart2;
 
 
