@@ -4,6 +4,12 @@ PLEASE KEEP A LIST OF ALL THE LIBARIRES THAT ARE BEING USED
 
 MOST LIBRARIES ARE FETCHED FROM ARUDINO IDE AND COPIED HERE
 
+
+
+
+
+
+
 IN USE:
 
 #=======================================
@@ -11,4 +17,9 @@ IN USE:
 
 cmsis-device-f4==?? #Get from github
 CMSIS_6==?? #Get from github those 
+
+#clone the following repos in the library directory
+https://github.com/ARM-software/CMSIS_6 
+https://github.com/STMicroelectronics/cmsis-device-f4
+
 #=======================================
